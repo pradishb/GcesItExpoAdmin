@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GcesItExpoAdmin.iml" filepath="$PROJECT_DIR$/.idea/modules/GcesItExpoAdmin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GcesItExpoAdmin.iml" filepath="$PROJECT_DIR$/.idea/GcesItExpoAdmin.iml" />
     </modules>
   </component>
 </project>

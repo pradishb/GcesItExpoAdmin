@@ -4,9 +4,9 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class AppTest {
+public class AppsTest {
     @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
+        Apps classUnderTest = new Apps();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
     }
 }
