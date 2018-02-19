@@ -16,7 +16,7 @@ plugins {
 }
 
 // Define the main class for the application
-mainClassName = 'Apps'
+mainClassName = 'gces.App'
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
