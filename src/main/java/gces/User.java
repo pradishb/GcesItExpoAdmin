@@ -44,8 +44,4 @@ public class User {
     public void setContactNo(String c){
         contactNo = c;
     }
-
-    public Object[] getObjects(){
-        return new Object[]{barCode, name, contactNo};
-    }
 }

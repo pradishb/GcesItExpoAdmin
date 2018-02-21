@@ -31,7 +31,7 @@ class UsersDialog extends JOptionPane {
 
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     User myItem = postSnapshot.getValue(User.class);
-                    myContacts.add(myItem.getObjects());
+                    myContacts.add(new Object[]{myItem.getBarCode(), myItem.getName(), myItem.getContactNo()});
                 }
 
                 Object[][] data = new Object[myContacts.size()][];

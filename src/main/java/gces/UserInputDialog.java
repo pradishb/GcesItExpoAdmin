@@ -1,5 +1,7 @@
 package gces;
 
+import com.google.firebase.database.DatabaseReference;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +22,8 @@ public class UserInputDialog extends JOptionPane {
             public void actionPerformed(ActionEvent e) {
                 try {
                     User myUser = new User(Integer.parseInt(barCode.getText()), name.getText(), contact.getText());
+                    DatabaseReference ref = FirebaseEngine.database.getReference("users");
+                    ref.push().setValueAsync(myUser);
                 }
                 catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(UserInputDialog.this, "Invalid Barcode", "Input Mismatch", JOptionPane.ERROR_MESSAGE);

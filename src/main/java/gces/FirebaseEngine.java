@@ -26,17 +26,6 @@ public class FirebaseEngine {
             FirebaseApp.initializeApp(options);
 
             database = FirebaseDatabase.getInstance();
-
-//            DatabaseReference ref = database.getReference("users");
-//
-//            User myUser = new User();
-//
-////            Task<Void> task = ref.push().setValue(myUser);
-////            try {
-////                Tasks.await(task);
-////            } catch (ExecutionException | InterruptedException e) {
-////                // Handle error if necessary
-////            }
         }
         catch (IOException e){
             e.printStackTrace();
