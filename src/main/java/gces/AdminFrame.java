@@ -11,13 +11,14 @@ import java.awt.event.ActionListener;
 public class AdminFrame extends JOptionPane{
     private JButton registerBtn;
     public AdminFrame(){
-        registerBtn = new JButton("Register People");
+        registerBtn = new JButton("Users Panel");
         registerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new UsersDialog().createDialog("hello").setVisible(true);
+                new UsersDialog().createDialog("Users Panel").setVisible(true);
             }
         });
+        setMessage("Welcome to the admin panel.");
         setOptions(new Object[]{registerBtn});
     }
 }
