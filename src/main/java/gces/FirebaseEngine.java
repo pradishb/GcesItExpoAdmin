@@ -9,11 +9,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class FirebaseEngine {
-    final static FirebaseDatabase database;
+    static FirebaseDatabase database;
 
     FirebaseEngine() {
-        final FirebaseDatabase database;
+    }
 
+    public static void initialize(){
         try {
             FileInputStream serviceAccount = new FileInputStream("gcesitexpo-firebase-adminsdk-61f7n-c33a170f7c.json");
 
@@ -24,7 +25,8 @@ public class FirebaseEngine {
 
             FirebaseApp.initializeApp(options);
 
-             database = FirebaseDatabase.getInstance();
+            database = FirebaseDatabase.getInstance();
+
 //            DatabaseReference ref = database.getReference("users");
 //
 //            User myUser = new User();
