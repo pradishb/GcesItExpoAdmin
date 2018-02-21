@@ -1,5 +1,8 @@
 package gces;
 
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutureCallback;
+import com.google.api.core.ApiFutures;
 import com.google.firebase.database.DatabaseReference;
 
 import javax.swing.*;
@@ -7,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UserInputDialog extends JOptionPane {
+
     public UserInputDialog(){
         JLabel barCodeLb = new JLabel("Barcode : ");
         JLabel nameLb = new JLabel("Name : ");
@@ -23,7 +27,19 @@ public class UserInputDialog extends JOptionPane {
                 try {
                     User myUser = new User(Integer.parseInt(barCode.getText()), name.getText(), contact.getText());
                     DatabaseReference ref = FirebaseEngine.database.getReference("users");
-                    ref.push().setValueAsync(myUser);
+                    ApiFuture<Void> task = ref.push().setValueAsync(myUser);
+
+                    ApiFutures.addCallback(task, new ApiFutureCallback<Void>() {
+                        @Override
+                        public void onSuccess(Void result) {
+                            JOptionPane.showMessageDialog(getRootFrame(), "Successfully registered user to the database");
+                        }
+
+                        @Override
+                        public void onFailure(Throwable t) {
+                            JOptionPane.showMessageDialog(getRootFrame(), "Error while registering user to the database");
+                        }
+                    });
                 }
                 catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(UserInputDialog.this, "Invalid Barcode", "Input Mismatch", JOptionPane.ERROR_MESSAGE);
