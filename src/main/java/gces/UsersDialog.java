@@ -20,12 +20,9 @@ class UsersDialog extends JOptionPane {
         TableModel model = new DefaultTableModel(new String[][]{}, COLS);
         table = new JTable(model);
         tableSp = new JScrollPane(table);
-
-        JTextField x = new JTextField("sdsf");
-        setMessage(new Object[]{tableSp, x});
+        setMessage(new Object[]{tableSp});
 
         DatabaseReference ref = FirebaseEngine.database.getReference("users");
-
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
