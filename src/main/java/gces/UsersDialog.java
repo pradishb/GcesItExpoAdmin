@@ -22,6 +22,8 @@ class UsersDialog extends JOptionPane {
         tableSp = new JScrollPane(table);
         setMessage(new Object[]{tableSp});
 
+        JDialog loading = new WorkingDialog().createDialog("Uploading to the database");
+
         DatabaseReference ref = FirebaseEngine.database.getReference("users");
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -41,11 +43,14 @@ class UsersDialog extends JOptionPane {
                 }
                 TableModel model = new DefaultTableModel(data, COLS);
                 table.setModel(model);
+                loading.dispose();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
+                JOptionPane.showMessageDialog(getRootFrame(), "Error while loading from the database");
+                loading.dispose();
             }
         };
         ref.addValueEventListener(postListener);

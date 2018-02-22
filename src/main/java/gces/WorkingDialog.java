@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class WorkingDialog extends JOptionPane {
     public WorkingDialog(){
-        setMessage("Loading");
+        setMessage("Connecting to the internet...");
         setMessageType(JOptionPane.PLAIN_MESSAGE);
         setOptions(new Object[]{});
     }
