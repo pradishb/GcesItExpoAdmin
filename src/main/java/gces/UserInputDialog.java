@@ -25,21 +25,30 @@ public class UserInputDialog extends JOptionPane {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+
                     User myUser = new User(Integer.parseInt(barCode.getText()), name.getText(), contact.getText());
+                    JDialog loading = new WorkingDialog().createDialog("Uploading to the database");
+
+
                     DatabaseReference ref = FirebaseEngine.database.getReference("users");
                     ApiFuture<Void> task = ref.push().setValueAsync(myUser);
 
                     ApiFutures.addCallback(task, new ApiFutureCallback<Void>() {
                         @Override
                         public void onSuccess(Void result) {
+                            loading.dispose();
                             JOptionPane.showMessageDialog(getRootFrame(), "Successfully registered user to the database");
                         }
 
                         @Override
                         public void onFailure(Throwable t) {
+                            loading.dispose();
                             JOptionPane.showMessageDialog(getRootFrame(), "Error while registering user to the database");
                         }
                     });
+
+                    loading.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+                    loading.setVisible(true);
                 }
                 catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(UserInputDialog.this, "Invalid Barcode", "Input Mismatch", JOptionPane.ERROR_MESSAGE);

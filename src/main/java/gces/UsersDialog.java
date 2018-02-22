@@ -45,8 +45,7 @@ class UsersDialog extends JOptionPane {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a messag
-                // ...
+                System.out.println("The read failed: " + databaseError.getCode());
             }
         };
         ref.addValueEventListener(postListener);
