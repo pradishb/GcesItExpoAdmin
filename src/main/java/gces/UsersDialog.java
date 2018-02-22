@@ -22,7 +22,7 @@ class UsersDialog extends JOptionPane {
         tableSp = new JScrollPane(table);
         setMessage(new Object[]{tableSp});
 
-        JDialog loading = new WorkingDialog().createDialog("Uploading to the database");
+        JDialog loading = new WorkingDialog().createDialog("Downloading data");
 
         DatabaseReference ref = FirebaseEngine.database.getReference("users");
 
@@ -54,5 +54,8 @@ class UsersDialog extends JOptionPane {
             }
         };
         ref.addValueEventListener(postListener);
+
+        loading.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        loading.setVisible(true);
     }
 }
