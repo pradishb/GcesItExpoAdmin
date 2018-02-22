@@ -9,11 +9,12 @@ import java.awt.event.ActionListener;
  */
 
 public class AdminFrame extends JOptionPane{
-    private JButton registerBtn;
+    private JButton showUsersBtn;
     private JButton userRegistrationBtn;
+    private JButton projectRegistrationBtn;
     public AdminFrame(){
-        registerBtn = new JButton("Users Panel");
-        registerBtn.addActionListener(new ActionListener() {
+        showUsersBtn = new JButton("Show all users");
+        showUsersBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new UsersDialog().createDialog("Users Panel").setVisible(true);
@@ -28,7 +29,15 @@ public class AdminFrame extends JOptionPane{
             }
         });
 
+        projectRegistrationBtn = new JButton("Project Registration");
+        projectRegistrationBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ProjectInputDialog().createDialog("Project Registration").setVisible(true);
+            }
+        });
+
         setMessage("Welcome to the admin panel.");
-        setOptions(new Object[]{userRegistrationBtn, registerBtn});
+        setOptions(new Object[]{userRegistrationBtn, showUsersBtn, projectRegistrationBtn});
     }
 }
