@@ -30,25 +30,5 @@ public class FirebaseEngine {
         catch (IOException e){
             e.printStackTrace();
         }
-//
-//
-//
-//        ValueEventListener postListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // Get Post object and use the values to update the UI
-//                String post = dataSnapshot.getValue(String.class);
-//                System.out.println(post);
-//                // ...
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a messag
-//                // ...
-//            }
-//        };
-//        myRef.addValueEventListener(postListener);
-
     }
 }
